@@ -1,0 +1,13 @@
+<li class="card" (click)="onSelect(recipe.id)">
+  <section class="card-items">
+    <div class="card-image-area">
+      <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" />
+    </div>
+    <div class="card-text-area">
+      <p class="title">{{ recipe.name }}</p>
+      <p class="desc">
+        {{ recipe.description }}
+      </p>
+    </div>
+  </section>
+</li>

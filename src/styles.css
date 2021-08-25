@@ -1,1 +1,143 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap");
+
+:root {
+  --primary-color: #82b8f5;
+  --secondary-color: #eeaeca;
+
+  --dark-primary: #084080;
+
+  --light-white: #f4f4f4;
+  --light-primary: #a8cdf7;
+  --light-secondary: #f8cef3;
+  --light-dark: #312f2f;
+  --light-gray: #ccc5c5;
+
+  --danger-color: #f73636;
+  --success-color: #09aa7a;
+
+  --light-color: #ffffff;
+  --dark-color: #111111;
+
+  --gradient: radial-gradient(
+    circle,
+    rgba(244, 162, 198, 1) 0%,
+    rgba(145, 188, 238, 1) 100%
+  );
+  --box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+p {
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  font: inherit;
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+}
+
+input,
+textarea {
+  font: inherit;
+  padding: 0.25rem 0.5rem;
+}
+
+label {
+  display: block;
+  font: inherit;
+}
+
+img {
+  display: block;
+}
+
+/* Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: 320px;
+  height: 420px;
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition: transform 300ms ease;
+}
+
+.card:hover {
+  transform: scale(1.025);
+}
+
+.card:active {
+  transform: scale(0.975);
+}
+
+.colorful-text {
+  background-clip: border-box;
+  background: linear-gradient(to right, #32479c 0%, #cc3586 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0.7rem 1.4rem;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.5);
+
+  transition: all 300ms ease;
+}
+
+.btn-secondary {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+}
+
+.btn-secondary:active {
+  transform: scale(0.95);
+}

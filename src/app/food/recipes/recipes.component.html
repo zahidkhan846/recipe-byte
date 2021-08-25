@@ -1,0 +1,10 @@
+<div class="home-page">
+  <h1 class="colorful-text heading">Find your fevorite meal...</h1>
+  <ul class="all-recipes">
+    <app-single-recipe
+      *ngFor="let recipe of recipes"
+      [recipe]="recipe"
+      (selectedRecipeId)="showRecipeDetail($event)"
+    ></app-single-recipe>
+  </ul>
+</div>
