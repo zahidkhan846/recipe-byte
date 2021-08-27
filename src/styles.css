@@ -7,7 +7,7 @@
   --dark-primary: #084080;
 
   --light-white: #f4f4f4;
-  --light-primary: #a8cdf7;
+  --light-primary: #c1dbf8;
   --light-secondary: #f8cef3;
   --light-dark: #312f2f;
   --light-gray: #ccc5c5;
@@ -80,7 +80,7 @@ img {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
 .center {
@@ -116,6 +116,13 @@ img {
   -webkit-text-fill-color: transparent;
 }
 
+.colorful-text-light {
+  background-clip: border-box;
+  background: linear-gradient(to right, #d7defa 0%, #fac6e2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .btn {
   cursor: pointer;
   padding: 0.7rem 1.4rem;
@@ -140,4 +147,8 @@ img {
 
 .btn-secondary:active {
   transform: scale(0.95);
+}
+
+.px-1 {
+  padding: 0 1rem;
 }

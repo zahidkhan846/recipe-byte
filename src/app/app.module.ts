@@ -9,9 +9,23 @@ import { RecipesComponent } from './food/recipes/recipes.component';
 import { SingleRecipeComponent } from './food/single-recipe/single-recipe.component';
 import { RecipeDetailComponent } from './food/recipe-detail/recipe-detail.component';
 import { IngredientsComponent } from './shop/ingredients/ingredients.component';
+import { ManageRecipeComponent } from './food/manage-recipe/manage-recipe.component';
+import { DropdownDirective } from './directives/dropdown.directive';
+import { ScrollLockDirective } from './directives/scroll-lock.directive';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, CardComponent, RecipesComponent, SingleRecipeComponent, RecipeDetailComponent, IngredientsComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    CardComponent,
+    RecipesComponent,
+    SingleRecipeComponent,
+    RecipeDetailComponent,
+    IngredientsComponent,
+    ManageRecipeComponent,
+    DropdownDirective,
+    ScrollLockDirective,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -16,6 +16,9 @@ export class AppComponent {
 
   onSetDetail(selectedRecipe: Recipe) {
     this.recipeDetail = selectedRecipe;
+
+    if (this.recipeDetail) {
+    }
   }
 
   onClose(recipe: Recipe) {

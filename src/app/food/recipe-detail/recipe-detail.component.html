@@ -1,9 +1,17 @@
 <div class="backdrop"></div>
-<section class="recipe-detail">
-  <h1 class="colorful-text">Recipe Details ({{ selectedRecipe.name }})</h1>
-  <div class="center flex">
-    <img [src]="selectedRecipe.imageUrl" alt="{{ selectedRecipe.name }}" />
-    <p>{{ selectedRecipe.description }}</p>
-    <button class="btn btn-secondary" (click)="onClose(null)">Close</button>
+<section class="modal">
+  <div class="header">
+    <h1>Recipe Details</h1>
+    <app-manage-recipe></app-manage-recipe>
+  </div>
+  <img [src]="selectedRecipe.imageUrl" alt="{{ selectedRecipe.name }}" />
+  <div class="detail">
+    <div class="text-div">
+      <h3>{{ selectedRecipe.name }}</h3>
+      <p>{{ selectedRecipe.description }}</p>
+    </div>
+    <div class="btn-div">
+      <button class="btn btn-secondary" (click)="onClose(null)">Close</button>
+    </div>
   </div>
 </section>

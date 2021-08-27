@@ -1,11 +1,11 @@
+.recipe-manager {
+  margin: 1rem;
+}
+
 .home-page {
   max-width: 1040px;
   margin: 0 auto;
   padding: 0 1rem;
-}
-
-.heading {
-  margin-bottom: 1rem;
 }
 
 .all-recipes {
@@ -22,7 +22,7 @@
 }
 
 @media (max-width: 500px) {
-  .heading {
+  .recipe-manager h1 {
     text-align: center;
   }
 

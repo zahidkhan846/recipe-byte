@@ -1,0 +1,55 @@
+.btn-container {
+  position: relative;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.7rem;
+
+  border-radius: 5px;
+
+  border: none;
+  outline: none;
+
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+
+svg {
+  height: 20px;
+}
+
+button:hover {
+  background: var(--light-secondary);
+}
+
+.active {
+  background: var(--light-secondary);
+  border-radius: 5px 5px 0 0;
+}
+
+.btn-list {
+  position: absolute;
+  background-color: var(--light-color);
+  left: 0;
+  right: 0;
+
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
+}
+
+.btn-list li {
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+}
+
+.btn-list li:nth-child(odd) {
+  background-color: var(--light-white);
+}
+
+.btn-list li:hover {
+  background-color: var(--light-dark);
+  color: var(--light-color);
+}
