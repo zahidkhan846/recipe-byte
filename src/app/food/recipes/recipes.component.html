@@ -6,7 +6,6 @@
     <app-single-recipe
       *ngFor="let recipe of recipes"
       [recipe]="recipe"
-      (selectedRecipeId)="showRecipeDetail($event)"
     ></app-single-recipe>
   </ul>
 </div>

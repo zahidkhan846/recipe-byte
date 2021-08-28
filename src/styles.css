@@ -12,8 +12,8 @@
   --light-dark: #312f2f;
   --light-gray: #ccc5c5;
 
-  --danger-color: #f73636;
-  --success-color: #09aa7a;
+  --danger-color: #fa5f5f;
+  --success-color: #068660;
 
   --light-color: #ffffff;
   --dark-color: #111111;
@@ -30,6 +30,21 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: none;
+  border-radius: 12px;
 }
 
 *:after,
@@ -145,7 +160,37 @@ img {
   color: var(--dark-color);
 }
 
-.btn-secondary:active {
+.btn-primary {
+  background-color: var(--light-primary);
+  border: none;
+  outline: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--light-dark);
+  color: var(--light-color);
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  color: var(--light-color);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: var(--light-color);
+  transition: transform 300ms ease;
+}
+
+.btn-success:hover,
+.btn-danger:hover {
+  transform: scale(1.05);
+}
+
+.btn-secondary:active,
+.btn-primary:active,
+.btn-success:active,
+.btn-danger:active {
   transform: scale(0.95);
 }
 

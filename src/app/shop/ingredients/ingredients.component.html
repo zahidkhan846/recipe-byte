@@ -1,8 +1,49 @@
-<h3>Ingredients reqired for Cheeze Corn Pizza</h3>
-<p>ADD, REMOVE, DELETE Ingredients</p>
-<p>Form for adding new ingredients</p>
-<ul>
-  <li *ngFor="let ingredient of ingredients">
-    <p>{{ ingredient.name }} ({{ ingredient.quantity }})</p>
-  </li>
-</ul>
+<div class="ing">
+  <section class="display-grid">
+    <div>
+      <h2>All Ingredients</h2>
+      <ul>
+        <li *ngFor="let ingredient of ingredients">
+          <div class="ingredient-list-item">
+            <p>{{ ingredient.name }} ({{ ingredient.quantity }})</p>
+            <app-manage-ingredient></app-manage-ingredient>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="form-add-ing" *ngIf="show; else otherContent">
+      <form>
+        <h3>Add Ingredient</h3>
+        <div class="form-control">
+          <label for="name">Ingredient Name</label>
+          <input type="text" name="name" id="name" />
+        </div>
+        <div class="form-control">
+          <label for="image">Ingredient Image</label>
+          <input type="text" name="image" id="image" />
+        </div>
+        <div class="form-control">
+          <label for="qty">Ingredient Quantity</label>
+          <input type="number" name="qty" id="qty" />
+        </div>
+        <div class="form-control btn-control">
+          <button class="btn btn-danger" type="submit">Clear</button>
+          <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <ng-template #otherContent>
+      <h3 class="center">Add/Ingredient details will appear here.</h3>
+    </ng-template>
+  </section>
+  <footer>
+    <h3>Add New Ingredient</h3>
+    <button
+      class="btn btn-primary"
+      (click)="onShowForm()"
+      [ngClass]="{ 'btn-danger': show }"
+    >
+      {{ show ? "Close Add Ingredient" : "Add New Ingredient" }}
+    </button>
+  </footer>
+</div>

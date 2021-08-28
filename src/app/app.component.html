@@ -1,9 +1,6 @@
 <app-header (currentComponent)="onNevigate($event)"></app-header>
 <div class="container">
-  <app-recipes
-    *ngIf="currentComponent === 'recipe'"
-    (recipeDetail)="onSetDetail($event)"
-  ></app-recipes>
+  <app-recipes *ngIf="currentComponent === 'recipe'"></app-recipes>
   <app-ingredients *ngIf="currentComponent === 'shop'"></app-ingredients>
 </div>
 <app-recipe-detail

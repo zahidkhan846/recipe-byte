@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ingredient } from 'src/model/ingredient';
+import { IngredientsService } from 'src/services/ingredients.service';
 
 @Component({
   selector: 'app-ingredients',
@@ -7,12 +8,17 @@ import { Ingredient } from 'src/model/ingredient';
   styleUrls: ['./ingredients.component.css'],
 })
 export class IngredientsComponent implements OnInit {
-  ingredients: Ingredient[] = [
-    new Ingredient('Cheese', 2),
-    new Ingredient('Tomato', 1),
-  ];
+  show = false;
 
-  constructor() {}
+  ingredients: Ingredient[] = [];
 
-  ngOnInit(): void {}
+  constructor(private ingredientsService: IngredientsService) {}
+
+  ngOnInit() {
+    this.ingredients = this.ingredientsService.getAllIngredients();
+  }
+
+  onShowForm() {
+    this.show = !this.show;
+  }
 }

@@ -12,6 +12,9 @@ import { IngredientsComponent } from './shop/ingredients/ingredients.component';
 import { ManageRecipeComponent } from './food/manage-recipe/manage-recipe.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { ScrollLockDirective } from './directives/scroll-lock.directive';
+import { RecipesService } from 'src/services/recipes.service';
+import { IngredientsService } from 'src/services/ingredients.service';
+import { ManageIngredientComponent } from './shop/manage-ingredient/manage-ingredient.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +28,10 @@ import { ScrollLockDirective } from './directives/scroll-lock.directive';
     ManageRecipeComponent,
     DropdownDirective,
     ScrollLockDirective,
+    ManageIngredientComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  providers: [RecipesService, IngredientsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
