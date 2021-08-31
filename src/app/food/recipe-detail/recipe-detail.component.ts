@@ -7,11 +7,17 @@ import { Recipe } from 'src/model/recipe';
   styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
+  showIngredients = false;
+
   @Input() selectedRecipe: Recipe;
   @Output() closeModal = new EventEmitter<Recipe>();
   ngOnInit(): void {}
 
   onClose(recipe: Recipe) {
     this.closeModal.emit(recipe);
+  }
+
+  onShowIngredients() {
+    this.showIngredients = !this.showIngredients;
   }
 }

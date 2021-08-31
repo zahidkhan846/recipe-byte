@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Ingredient } from 'src/model/ingredient';
+import { Recipe } from 'src/model/recipe';
+import { IngredientsService } from 'src/services/ingredients.service';
 
 @Component({
   selector: 'app-manage-recipe',
@@ -8,7 +11,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ManageRecipeComponent implements OnInit {
   show: boolean = false;
 
-  constructor() {}
+  @Input() selectedRecipe: Recipe;
+
+  constructor(private allIngredientsService: IngredientsService) {}
 
   ngOnInit(): void {}
 
@@ -17,7 +22,9 @@ export class ManageRecipeComponent implements OnInit {
   }
 
   onAdd() {
-    console.log('Adding');
+    const allIngredients: Ingredient[] = this.selectedRecipe.ingredients;
+    this.allIngredientsService.addIngredients(allIngredients);
+    this.show = false;
   }
 
   onEdit() {

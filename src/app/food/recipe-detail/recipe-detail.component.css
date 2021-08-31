@@ -9,7 +9,7 @@
   position: absolute;
   inset: 0;
   margin: auto;
-  height: 650px;
+  height: 600px;
   width: 600px;
   box-shadow: var(--box-shadow);
   z-index: 120;
@@ -30,17 +30,17 @@
   align-items: center;
   height: 60px;
   padding: 0 1rem;
+  background-color: var(--light-white);
 }
 
 .detail {
   display: flex;
   flex-direction: column;
-  height: 190px;
+  height: 140px;
   justify-content: space-between;
 }
 
 .text-div {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -48,41 +48,81 @@
 
 .text-div h3 {
   padding: 0.5rem 1rem;
-  background: var(--gradient);
-  flex: 1;
-  display: flex;
-  align-items: center;
+  background: var(--light-white);
+  color: gray;
+}
+
+span {
+  color: var(--danger-color);
 }
 
 .text-div p {
-  overflow-y: scroll;
   padding: 0 1rem;
-  height: 100px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.text-div p::-webkit-scrollbar {
-  width: 0.5rem;
+.tags {
+  display: flex;
+  overflow-x: auto;
+  width: 600px;
+
+  padding: 0.25rem 0;
 }
 
-.text-div p::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 12px 0 0 12px;
+.tags::-webkit-scrollbar {
+  height: 0.5rem;
 }
 
-.text-div p::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
+.tags::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(142, 227, 253, 0.3);
+  border-radius: 12px;
+}
+
+.tags::-webkit-scrollbar-thumb {
+  background-color: rgb(241, 165, 165);
   outline: none;
-  border-radius: 12px 0 0 12px;
+  border-radius: 12px;
+}
+
+.tag {
+  min-width: 100px;
+  background-color: rgb(233, 233, 25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  padding: 0.25rem 0;
+  box-shadow: var(--box-shadow);
+  margin: 0.25rem 0.5rem;
+}
+
+.tag:nth-child(even) {
+  background-color: rgb(171, 94, 235);
+  color: white;
 }
 
 .btn {
   border-radius: 15px 0 0 0;
 }
 
+.btn-primary {
+  border-radius: 0 15px 0 0;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+  transform: none;
+}
+
 .btn-div {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   height: 41.6px;
 }
 

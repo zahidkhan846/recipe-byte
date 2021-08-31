@@ -1,10 +1,2 @@
-<app-header (currentComponent)="onNevigate($event)"></app-header>
-<div class="container">
-  <app-recipes *ngIf="currentComponent === 'recipe'"></app-recipes>
-  <app-ingredients *ngIf="currentComponent === 'shop'"></app-ingredients>
-</div>
-<app-recipe-detail
-  *ngIf="!!recipeDetail"
-  [selectedRecipe]="recipeDetail"
-  (closeModal)="onClose($event)"
-></app-recipe-detail>
+<app-header></app-header>
+<router-outlet></router-outlet>

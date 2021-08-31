@@ -86,14 +86,26 @@ ul {
 }
 
 footer {
-  background-color: var(--primary-color);
-  padding: 14px 16px;
+  background-color: var(--light-dark);
+  color: var(--light-white);
+  padding: 14px 28px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 10px 10px 0 0;
   z-index: 130;
+}
+
+footer button {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+  box-shadow: 0 0 0.5rem 0 rgba(255, 255, 255, 0.5);
+}
+
+footer button:hover {
+  background-color: var(--light-white);
+  color: var(--dark-color);
 }
 
 @media (max-width: 500px) {

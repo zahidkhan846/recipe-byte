@@ -2,15 +2,26 @@
 <section class="modal">
   <div class="header">
     <h1>Recipe Details</h1>
-    <app-manage-recipe></app-manage-recipe>
+    <app-manage-recipe [selectedRecipe]="selectedRecipe"></app-manage-recipe>
   </div>
   <img [src]="selectedRecipe.imageUrl" alt="{{ selectedRecipe.name }}" />
   <div class="detail">
     <div class="text-div">
-      <h3>{{ selectedRecipe.name }}</h3>
-      <p>{{ selectedRecipe.description }}</p>
+      <h3>
+        <span>{{ selectedRecipe.name }}</span>
+        ({{ showIngredients ? "Ingredients" : "Details" }})
+      </h3>
+      <p *ngIf="!showIngredients">{{ selectedRecipe.description }}</p>
+      <ul class="tags" *ngIf="showIngredients">
+        <li class="tag" *ngFor="let ingredient of selectedRecipe.ingredients">
+          <p>{{ ingredient.name }} - {{ ingredient.quantity }}</p>
+        </li>
+      </ul>
     </div>
     <div class="btn-div">
+      <button class="btn btn-primary" (click)="onShowIngredients()">
+        {{ !showIngredients ? "Ingredients" : "Details" }}
+      </button>
       <button class="btn btn-secondary" (click)="onClose(null)">Close</button>
     </div>
   </div>

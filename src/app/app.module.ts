@@ -15,6 +15,8 @@ import { ScrollLockDirective } from './directives/scroll-lock.directive';
 import { RecipesService } from 'src/services/recipes.service';
 import { IngredientsService } from 'src/services/ingredients.service';
 import { ManageIngredientComponent } from './shop/manage-ingredient/manage-ingredient.component';
+import { FormsModule } from '@angular/forms';
+import { AddRecipeComponent } from './food/add-recipe/add-recipe.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,9 @@ import { ManageIngredientComponent } from './shop/manage-ingredient/manage-ingre
     DropdownDirective,
     ScrollLockDirective,
     ManageIngredientComponent,
+    AddRecipeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [RecipesService, IngredientsService],
   bootstrap: [AppComponent],
 })
