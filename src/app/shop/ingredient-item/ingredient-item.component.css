@@ -1,0 +1,23 @@
+li {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+header,
+main {
+  display: flex;
+  background-color: var(--light-dark);
+  color: var(--light-color);
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main {
+  background-color: var(--lighter-primary);
+}
+
+span {
+  color: var(--success-color);
+}

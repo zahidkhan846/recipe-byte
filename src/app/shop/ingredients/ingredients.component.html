@@ -1,50 +1,18 @@
 <div class="container">
-  <div class="ing">
-    <section class="display-grid">
-      <div>
-        <h2>All Ingredients</h2>
-        <ul>
-          <li *ngFor="let ingredient of ingredients">
-            <div class="ingredient-list-item">
-              <p>{{ ingredient.name }} ({{ ingredient.quantity }})</p>
-              <app-manage-ingredient></app-manage-ingredient>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="form-add-ing" *ngIf="show">
-        <form (ngSubmit)="onFormSubmit($event)">
-          <h3>Add Ingredient</h3>
-          <div class="form-control">
-            <label for="name">Ingredient Name</label>
-            <input type="text" name="name" id="name" [(ngModel)]="name" />
-          </div>
-          <div class="form-control">
-            <label for="image">Ingredient Image</label>
-            <input type="text" name="image" id="image" [(ngModel)]="imageUrl" />
-          </div>
-          <div class="form-control">
-            <label for="qty">Ingredient Quantity</label>
-            <input type="number" name="qty" id="qty" [(ngModel)]="quantity" />
-          </div>
-          <div class="form-control btn-control">
-            <button class="btn btn-danger" (click)="onClearForm()">
-              Clear
-            </button>
-            <button class="btn btn-success" type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
-    </section>
-    <footer>
-      <h3>Add New Ingredient</h3>
-      <button
-        class="btn btn-primary"
-        (click)="onShowForm()"
-        [ngClass]="{ 'btn-danger': show }"
-      >
-        {{ show ? "Close Add Ingredient" : "Add New Ingredient" }}
-      </button>
-    </footer>
+  <div class="add-ing">
+    <h2 class="colorful-text">All Ingredients</h2>
+    <a routerLink="/shop/add-ing" class="btn btn-light">Add Ingredient</a>
+  </div>
+  <div class="center">
+    <ul *ngIf="hasIngredients()">
+      <app-ingredient-item
+        *ngFor="let ingredient of ingredients"
+        [ingredient]="ingredient"
+      ></app-ingredient-item>
+    </ul>
+    <app-fallback-content
+      *ngIf="!hasIngredients()"
+      fallbackText="Ingredients will appear here..."
+    ></app-fallback-content>
   </div>
 </div>

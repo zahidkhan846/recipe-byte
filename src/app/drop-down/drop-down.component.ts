@@ -4,11 +4,11 @@ import { Recipe } from 'src/model/recipe';
 import { IngredientsService } from 'src/services/ingredients.service';
 
 @Component({
-  selector: 'app-manage-recipe',
-  templateUrl: './manage-recipe.component.html',
-  styleUrls: ['./manage-recipe.component.css'],
+  selector: 'app-drop-down',
+  templateUrl: './drop-down.component.html',
+  styleUrls: ['./drop-down.component.css'],
 })
-export class ManageRecipeComponent implements OnInit {
+export class DropDownComponent implements OnInit {
   show: boolean = false;
 
   @Input() selectedRecipe: Recipe;

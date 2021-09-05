@@ -1,18 +1,16 @@
 <div class="container">
-  <div class="recipe-manager">
-    <h1 class="colorful-text">Find your fevorite meal...</h1>
-  </div>
-  <div class="home-page">
-    <ul class="all-recipes">
-      <app-single-recipe
-        *ngFor="let recipe of recipes"
-        [recipe]="recipe"
-      ></app-single-recipe>
-    </ul>
-  </div>
-  <app-recipe-detail
-    *ngIf="!!recipeDetail"
-    [selectedRecipe]="recipeDetail"
-    (closeModal)="onClose(null)"
-  ></app-recipe-detail>
+  <section class="home-page">
+    <div>
+      <h2 class="colorful-text">Find your fevorite meal...</h2>
+      <ul>
+        <app-single-recipe
+          *ngFor="let recipe of recipes"
+          [recipe]="recipe"
+        ></app-single-recipe>
+      </ul>
+    </div>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </section>
 </div>

@@ -1,0 +1,24 @@
+.btn-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.disabled {
+  background-color: var(--lighter-primary);
+  box-shadow: none;
+  cursor: default;
+}
+
+.disabled:hover {
+  transform: none;
+}
+
+@media (max-width: 750px) {
+  .center {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    z-index: 120;
+  }
+}

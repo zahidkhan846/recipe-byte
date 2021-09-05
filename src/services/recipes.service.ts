@@ -49,7 +49,7 @@ export class RecipesService {
   getSelectedRecipe = new EventEmitter<string>();
 
   getAllRecipes() {
-    const copyOfRecipes = [...this.recipes]; //this.recipes.slice()
+    const copyOfRecipes = [...this.recipes];
     return copyOfRecipes;
   }
 }

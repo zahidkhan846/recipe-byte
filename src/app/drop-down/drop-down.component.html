@@ -1,6 +1,6 @@
 <div class="btn-container">
   <button (click)="onShowDropDown()" [ngClass]="{ active: show }">
-    <span>Manage Recipe</span>
+    <span>Manage</span>
     <svg *ngIf="!show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <polyline
         points="5 9 12 16 19 9"
@@ -18,9 +18,8 @@
       />
     </svg>
   </button>
-  <ul *ngIf="show" class="btn-list">
-    <li (click)="onAdd()">Add To Recipe</li>
-    <li (click)="onEdit()">Edit Recipe</li>
-    <li (click)="onRemove()">Remove Recipe</li>
+  <ul *ngIf="show">
+    <li (click)="onEdit()">Edit</li>
+    <li (click)="onRemove()">Remove</li>
   </ul>
 </div>

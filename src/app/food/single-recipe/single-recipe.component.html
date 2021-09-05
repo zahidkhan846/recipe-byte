@@ -1,13 +1,13 @@
-<li class="card" (click)="onSelect(recipe.id)">
-  <section class="card-items">
-    <div class="card-image-area">
-      <img [src]="recipe.imageUrl" alt="{{ recipe.name }}" />
+<li (click)="onSelect(recipe.id)">
+  <header>
+    <h3>{{ recipe.name }}</h3>
+    <app-drop-down></app-drop-down>
+  </header>
+  <main>
+    <p>{{ recipe.description }}</p>
+    <div class="button-control">
+      <a [routerLink]="[recipe.id]" class="btn btn-light">Know More</a>
+      <button class="btn btn-primary">Add Ingredients</button>
     </div>
-    <div class="card-text-area">
-      <p class="title">{{ recipe.name }}</p>
-      <p class="desc">
-        {{ recipe.description }}
-      </p>
-    </div>
-  </section>
+  </main>
 </li>

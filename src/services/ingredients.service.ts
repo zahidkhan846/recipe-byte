@@ -1,11 +1,12 @@
-import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Ingredient } from 'src/model/ingredient';
 
 export class IngredientsService {
-  updatedIngredients = new EventEmitter<Ingredient[]>();
+  updatedIngredients = new Subject<Ingredient[]>();
 
   private ingredients: Ingredient[] = [
-    new Ingredient('1', 'Cheese', 'http://picsum.photos/300', 2),
+    new Ingredient('1', 'Cheese', 2),
+    new Ingredient('2', 'Bun', 2),
   ];
 
   getAllIngredients() {
@@ -15,11 +16,21 @@ export class IngredientsService {
 
   addNewIngredient(newIng: Ingredient) {
     this.ingredients.push(newIng);
-    this.updatedIngredients.emit(this.ingredients.slice());
+    this.updatedIngredients.next(this.ingredients.slice());
   }
 
   addIngredients(newIngs: Ingredient[]) {
     this.ingredients.push(...newIngs);
-    this.updatedIngredients.emit(this.ingredients.slice());
+    this.updatedIngredients.next(this.ingredients.slice());
   }
+
+  getSelectedIngredient(ingId: string) {
+    return this.ingredients.find(
+      (ingredient: Ingredient) => ingredient.id === ingId
+    );
+  }
+
+  removeSelectedIngredient(ingId: string) {}
+
+  updateSelectedIngredient(ing: Ingredient) {}
 }
