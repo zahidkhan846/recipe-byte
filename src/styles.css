@@ -14,6 +14,7 @@
   --light-primary: #d777f5;
   --light-secondary: #f1ef58;
   --light-dark: #312f2f;
+  --light-gray: #837e7e;
 
   --danger-color: #fa5f5f;
   --success-color: #1cb98a;
@@ -133,6 +134,20 @@ img {
   -webkit-text-fill-color: transparent;
 }
 
+.icon-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  outline: none;
+  background-color: var(--light-white);
+  box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.25);
+  transition: all 300ms ease;
+}
+
 .btn {
   cursor: pointer;
   padding: 0.7rem 1.4rem;
@@ -142,11 +157,14 @@ img {
   border-radius: 5px;
   box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.5);
   transition: all 300ms ease;
+
+  background-color: var(--light-color);
+  color: var(--dark-color);
 }
 
 .btn-primary {
   background-color: var(--primary-color);
-  color: var(--light-white);
+  color: var(--light-color);
 }
 
 .btn-secondary {
@@ -164,17 +182,18 @@ img {
   color: var(--light-color);
 }
 
-.btn-primary:hover,
-.btn-secondary:hover,
-.btn-success:hover,
-.btn-danger:hover {
+.btn-light {
+  background-color: var(--light-white);
+  color: var(--dark-color);
+}
+
+.btn:hover,
+.icon-btn:hover {
   transform: scale(1.05);
 }
 
-.btn-primary:active,
-.btn-secondary:active,
-.btn-success:active,
-.btn-danger:active {
+.btn:active,
+.icon-btn:active {
   transform: scale(0.95);
 }
 
@@ -220,11 +239,37 @@ img {
   align-items: center;
   gap: 1rem;
 }
+
+.disabled {
+  background-color: var(--lighter-primary);
+  box-shadow: none;
+  cursor: default;
+}
+
+.disabled:hover {
+  transform: none;
+}
 /* FORM CSS */
 
 /* UTILS */
 .bg-light {
   background-color: var(--light-white);
   color: var(--dark-color);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.no-shadow {
+  box-shadow: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bg-image {
+  background: #fff url(/assets/bg-primary.png) center center/cover no-repeat;
 }
 /* UTILS */

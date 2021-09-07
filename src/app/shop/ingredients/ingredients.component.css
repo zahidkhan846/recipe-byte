@@ -17,14 +17,14 @@ ul {
   margin: 1rem auto;
 }
 
-.btn-light {
-  background-color: var(--light-white);
-  color: var(--dark-primary);
-  text-transform: capitalize;
-  box-shadow: none;
-}
-
 .btn:hover {
   background-color: var(--dark-primary);
   color: var(--light-color);
+}
+
+.fallback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
 }

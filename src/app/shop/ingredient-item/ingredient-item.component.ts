@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ingredient } from 'src/model/ingredient';
+import { IngredientsService } from 'src/services/ingredients.service';
 
 @Component({
   selector: 'app-ingredient-item',
@@ -9,12 +10,18 @@ import { Ingredient } from 'src/model/ingredient';
 })
 export class IngredientItemComponent implements OnInit {
   @Input() ingredient: Ingredient;
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private ingredientService: IngredientsService
+  ) {}
 
   ngOnInit(): void {}
 
   onEdit(id: string) {
     this.router.navigate(['shop', id, 'edit']);
   }
-  onDelete(id: string) {}
+
+  onDelete(id: string) {
+    this.ingredientService.removeSelectedIngredient(id);
+  }
 }

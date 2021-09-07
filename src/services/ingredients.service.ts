@@ -4,10 +4,7 @@ import { Ingredient } from 'src/model/ingredient';
 export class IngredientsService {
   updatedIngredients = new Subject<Ingredient[]>();
 
-  private ingredients: Ingredient[] = [
-    new Ingredient('1', 'Cheese', 2),
-    new Ingredient('2', 'Bun', 2),
-  ];
+  private ingredients: Ingredient[] = [new Ingredient('1', 'Doe', 2)];
 
   getAllIngredients() {
     const copyOfIngredients = [...this.ingredients];
@@ -30,7 +27,20 @@ export class IngredientsService {
     );
   }
 
-  removeSelectedIngredient(ingId: string) {}
+  removeSelectedIngredient(ingId: string) {
+    const updatedIngredients = this.ingredients.filter(
+      (ingredient: Ingredient) => ingredient.id !== ingId
+    );
+    this.updatedIngredients.next(updatedIngredients);
+  }
 
-  updateSelectedIngredient(ing: Ingredient) {}
+  updateSelectedIngredient(ingredient: Ingredient) {
+    const { id } = ingredient;
+    const selectedIngredient = this.ingredients.find(
+      (ingredient: Ingredient) => ingredient.id === id
+    );
+    selectedIngredient.name = ingredient.name;
+    selectedIngredient.quantity = ingredient.quantity;
+    this.updatedIngredients.next(this.ingredients.slice());
+  }
 }

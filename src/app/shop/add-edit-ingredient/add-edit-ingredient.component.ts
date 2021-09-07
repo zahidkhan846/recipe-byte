@@ -48,9 +48,11 @@ export class AddEditIngredientComponent implements OnInit {
     if (this.editMode) {
       ingredient.id = this.ingredient.id;
       this.ingService.updateSelectedIngredient(ingredient);
+    } else {
+      this.ingService.addNewIngredient(ingredient);
     }
-    this.ingService.addNewIngredient(ingredient);
     this.onClearForm();
+    this.onGoBack();
   }
 
   onClearForm() {

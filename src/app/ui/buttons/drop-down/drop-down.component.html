@@ -19,7 +19,7 @@
     </svg>
   </button>
   <ul *ngIf="show">
-    <li (click)="onEdit()">Edit</li>
-    <li (click)="onRemove()">Remove</li>
+    <li (click)="onEditEvent($event)">Edit</li>
+    <li (click)="onRemoveEvent($event)">Remove</li>
   </ul>
 </div>

@@ -9,13 +9,17 @@ import { SingleRecipeComponent } from './food/single-recipe/single-recipe.compon
 import { IngredientsComponent } from './shop/ingredients/ingredients.component';
 import { RecipesService } from 'src/services/recipes.service';
 import { IngredientsService } from 'src/services/ingredients.service';
-import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './auth/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddEditRecipeComponent } from './food/add-edit-recipe/add-edit-recipe.component';
 import { AddEditIngredientComponent } from './shop/add-edit-ingredient/add-edit-ingredient.component';
 import { IngredientItemComponent } from './shop/ingredient-item/ingredient-item.component';
 import { FallbackContentComponent } from './fallback-content/fallback-content.component';
-import { DropDownComponent } from './drop-down/drop-down.component';
+import { DropDownComponent } from './ui/buttons/drop-down/drop-down.component';
+import { DetailComponent } from './food/detail/detail.component';
+import { DeleteButtonComponent } from './ui/buttons/delete-button/delete-button.component';
+import { AddButtonComponent } from './ui/buttons/add-button/add-button.component';
+import { AuthComponent } from './authentication/auth/auth.component';
+import { RegisterLoginComponent } from './authentication/register-login/register-login.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +28,18 @@ import { DropDownComponent } from './drop-down/drop-down.component';
     RecipesComponent,
     SingleRecipeComponent,
     IngredientsComponent,
-    LoginComponent,
     AddEditRecipeComponent,
     AddEditIngredientComponent,
     IngredientItemComponent,
     FallbackContentComponent,
     DropDownComponent,
+    DetailComponent,
+    DeleteButtonComponent,
+    AddButtonComponent,
+    AuthComponent,
+    RegisterLoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [RecipesService, IngredientsService],
   bootstrap: [AppComponent],
 })
