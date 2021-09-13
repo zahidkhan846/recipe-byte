@@ -75,8 +75,9 @@ export class RegisterLoginComponent implements OnInit {
       );
     } else {
       this.authService.signIn(userData.email, userData.password).subscribe(
-        (resData) => {
+        () => {
           this.isLoading = false;
+          this.router.navigate(['recipes']);
         },
         (errMessage) => {
           this.errors.message = errMessage;

@@ -21,9 +21,10 @@ import { AddButtonComponent } from './ui/buttons/add-button/add-button.component
 import { AuthComponent } from './authentication/auth/auth.component';
 import { RegisterLoginComponent } from './authentication/register-login/register-login.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 import { XBtnComponent } from './ui/buttons/x-btn/x-btn.component';
+import { AuthInterceptor } from 'src/services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,11 @@ import { XBtnComponent } from './ui/buttons/x-btn/x-btn.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [RecipesService, IngredientsService],
+  providers: [
+    RecipesService,
+    IngredientsService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

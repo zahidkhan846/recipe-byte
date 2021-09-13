@@ -8,7 +8,7 @@
 </div>
 <div class="center">
   <form class="form" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-    <h2 class="title">
+    <h2 class="title colorful-text">
       {{ isPathRegister() ? "Register User" : "Login User" }}
     </h2>
     <div class="form-control" *ngIf="isPathRegister()">

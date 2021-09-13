@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, throwError } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Subscription, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { signInUrl, signUpUrl } from 'src/config/firebase';
 import { environment } from 'src/environments/environment';
@@ -8,11 +9,25 @@ import { AuthRes } from 'src/model/AuthRes';
 import { User } from 'src/model/User';
 import { UserService } from './user.service';
 
+export interface CurrentUser {
+  authToken: string;
+  email: string;
+  expTime: string;
+  fullName: string;
+  password?: string;
+  userId: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  currentUser = new Subject<User>();
+  timer: any = null;
+  currentUser = new BehaviorSubject<User>(null);
 
-  constructor(private http: HttpClient, private userService: UserService) {}
+  constructor(
+    private http: HttpClient,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   signUp(userData: User) {
     const newUser = {
@@ -48,9 +63,8 @@ export class AuthService {
         catchError(this.handleErrors),
         tap((resData) => {
           if (!resData) return;
-          const expTime = new Date(
-            new Date().getTime() + +resData.expiresIn * 1000
-          );
+          const expiresIn: number = +resData.expiresIn * 1000;
+          const expTime = new Date(new Date().getTime() + expiresIn);
           this.userService
             .getCurrentUser(resData.localId)
             .subscribe((userResData) => {
@@ -64,9 +78,49 @@ export class AuthService {
                 expTime
               );
               this.currentUser.next(user);
+              this.autoLogout(expiresIn);
+              localStorage.setItem('userData', JSON.stringify(user));
             });
         })
       );
+  }
+
+  setCurrentUser() {
+    const userData: CurrentUser = JSON.parse(localStorage.getItem('userData'));
+    if (!userData) {
+      return;
+    }
+    const user = new User(
+      userData.email,
+      null,
+      userData.fullName,
+      userData.userId,
+      userData.authToken,
+      new Date(userData.expTime)
+    );
+    const loggedOutIn =
+      new Date(userData.expTime).getTime() - new Date().getTime();
+
+    if (user.token) {
+      this.currentUser.next(user);
+      this.autoLogout(loggedOutIn);
+    }
+  }
+
+  logout() {
+    this.currentUser.next(null);
+    localStorage.removeItem('userData');
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+    this.timer = null;
+    this.router.navigate(['recipes']);
+  }
+
+  autoLogout(expTime: number) {
+    this.timer = setTimeout(() => {
+      this.logout();
+    }, expTime);
   }
 
   private handleErrors(errRes) {

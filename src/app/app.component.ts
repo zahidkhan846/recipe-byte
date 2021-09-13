@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/services/auth.service';
 import { RecipesService } from 'src/services/recipes.service';
 
 @Component({
@@ -7,9 +8,13 @@ import { RecipesService } from 'src/services/recipes.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(private recipeService: RecipesService) {}
+  constructor(
+    private recipeService: RecipesService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
+    this.authService.setCurrentUser();
     this.recipeService.fetchAllRecipes().subscribe();
   }
 }

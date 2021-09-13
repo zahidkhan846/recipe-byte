@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NavGuardService } from 'src/services/nav-guard.service';
 import { RecipeResolver } from 'src/services/recipe-resolver.service';
 import { AuthComponent } from './authentication/auth/auth.component';
 import { RegisterLoginComponent } from './authentication/register-login/register-login.component';
@@ -20,11 +21,13 @@ const routes: Routes = [
   {
     path: 'add-recipe',
     component: AddEditRecipeComponent,
+    canActivate: [NavGuardService],
   },
   {
     path: 'recipes/:id/edit',
     component: AddEditRecipeComponent,
     resolve: [RecipeResolver],
+    canActivate: [NavGuardService],
   },
   {
     path: 'shop',
