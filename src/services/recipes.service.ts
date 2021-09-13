@@ -1,33 +1,30 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Ingredient } from 'src/model/ingredient';
+import { tap } from 'rxjs/operators';
+import { databseUrl } from 'src/config/firebase';
 import { Recipe } from 'src/model/recipe';
 
+@Injectable()
 export class RecipesService {
   updatedRecipes = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-    new Recipe(
-      '1',
-      'Cheese Corn Pizza',
-      "Prepared using pizza dough, sauce, corn, mozzarella, parmesan, and cheddar cheese, this recipe is a pizza lover's dream come true.",
-      'https://images.pexels.com/photos/262977/pexels-photo-262977.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-      [
-        new Ingredient(new Date().toISOString(), 'Doe', 1),
-        new Ingredient(new Date().toISOString(), 'Tomato', 1),
-      ]
-    ),
-    new Recipe(
-      '2',
-      'Burger',
-      'Hamburger, a burger consisting of one or more cooked patties of ground beef, placed inside a sliced bread roll or bun.',
-      'https://images.pexels.com/photos/1893557/pexels-photo-1893557.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-      [
-        new Ingredient(new Date().toISOString(), 'Bun', 1),
-        new Ingredient(new Date().toISOString(), 'Meat', 1),
-        new Ingredient(new Date().toISOString(), 'Fries', 10),
-      ]
-    ),
-  ];
+  private recipes: Recipe[] = [];
+
+  constructor(private http: HttpClient) {}
+
+  fetchAllRecipes() {
+    return this.http.get<Recipe[]>(databseUrl('recipes')).pipe(
+      tap((recipes) => {
+        this.setAllRecipes(recipes);
+      })
+    );
+  }
+
+  setAllRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.updatedRecipes.next(this.recipes.slice());
+  }
 
   getAllRecipes() {
     const copyOfRecipes = [...this.recipes];

@@ -21,6 +21,10 @@ import { AddButtonComponent } from './ui/buttons/add-button/add-button.component
 import { AuthComponent } from './authentication/auth/auth.component';
 import { RegisterLoginComponent } from './authentication/register-login/register-login.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
+import { XBtnComponent } from './ui/buttons/x-btn/x-btn.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +42,16 @@ import { RegisterLoginComponent } from './authentication/register-login/register
     AddButtonComponent,
     AuthComponent,
     RegisterLoginComponent,
+    LoadingSpinnerComponent,
+    XBtnComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [RecipesService, IngredientsService],
   bootstrap: [AppComponent],
 })

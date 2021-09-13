@@ -28,3 +28,11 @@ ul {
   align-items: center;
   height: 70vh;
 }
+
+@media (max-width: 768px) {
+  .add-ing {
+    flex-direction: column;
+    width: 400px;
+    gap: 1rem;
+  }
+}

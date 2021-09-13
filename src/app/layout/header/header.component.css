@@ -50,7 +50,7 @@
   background: var(--light-secondary);
 }
 
-@media (max-width: 550px) {
+@media (max-width: 750px) {
   .navbar {
     justify-content: center;
     flex-direction: column;

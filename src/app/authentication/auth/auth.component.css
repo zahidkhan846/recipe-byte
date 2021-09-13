@@ -40,7 +40,8 @@ a.active {
 .content {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+  padding-top: 2rem;
   height: 100%;
 }
 
@@ -56,13 +57,21 @@ a.active {
     box-shadow: none;
   }
 
+  a {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.25);
+    color: var(--light-color);
+  }
+
+  a:hover {
+    background-color: var(--light-primary);
+    color: var(--dark-color);
+  }
+
   a.active {
     background-color: var(--white-color);
     box-shadow: none;
-  }
-
-  a {
-    background-color: var(--secondary-color);
-    box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.25);
+    cursor: default;
+    color: var(--dark-color);
   }
 }

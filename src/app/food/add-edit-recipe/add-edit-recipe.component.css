@@ -26,8 +26,3 @@ small {
   font-style: italic;
   color: gray;
 }
-
-input.ng-invalid.ng-touched,
-textarea.ng-invalid.ng-touched {
-  border-color: var(--danger-color);
-}

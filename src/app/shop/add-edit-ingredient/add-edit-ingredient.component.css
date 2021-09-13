@@ -3,8 +3,3 @@
   justify-content: space-between;
   align-items: center;
 }
-
-input.ng-invalid.ng-touched,
-textarea.ng-invalid.ng-touched {
-  border-color: var(--danger-color);
-}

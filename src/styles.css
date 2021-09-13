@@ -249,6 +249,12 @@ img {
 .disabled:hover {
   transform: none;
 }
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: var(--danger-color);
+}
+
 /* FORM CSS */
 
 /* UTILS */
@@ -271,5 +277,18 @@ img {
 
 .bg-image {
   background: #fff url(/assets/bg-primary.png) center center/cover no-repeat;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.danger-text {
+  color: var(--danger-color);
+  font-style: italic;
 }
 /* UTILS */
