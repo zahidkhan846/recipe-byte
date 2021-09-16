@@ -21,7 +21,7 @@
           routerLinkActive="active"
           >Login</a
         >
-        <a *ngIf="currentUser" (click)="onLogout()">Logout</a>
+        <a class="logout" *ngIf="currentUser" (click)="onLogout()">Logout</a>
       </li>
     </ul>
   </nav>
