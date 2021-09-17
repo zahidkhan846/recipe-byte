@@ -45,7 +45,6 @@ export class RecipesService {
   }
 
   addNewRecipe(recipe: Recipe) {
-    console.log(recipe.id);
     this.http
       .post<Recipe>(databseUrl('recipes'), recipe, {
         observe: 'response',

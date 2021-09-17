@@ -16,9 +16,7 @@ export class IngredientItemComponent implements OnInit {
     private ingredientService: IngredientsService
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.ingIndex);
-  }
+  ngOnInit(): void {}
 
   onEdit(index: number) {
     this.router.navigate(['ingredient', index, 'edit']);

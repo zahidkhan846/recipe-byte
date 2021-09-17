@@ -42,7 +42,6 @@ export class AuthService {
       .pipe(
         catchError(this.handleErrors),
         tap((res) => {
-          console.log(res.body);
           if (res.ok) {
             const userId = res.body.localId;
             this.userService.createUser(userId, userData).subscribe();
