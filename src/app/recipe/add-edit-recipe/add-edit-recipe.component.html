@@ -1,6 +1,8 @@
 <div class="center">
   <form class="form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-    <h2 class="title">{{ editMode ? "Update Recipe" : "Add New Recipe" }}</h2>
+    <h2 class="title colorful-text">
+      {{ editMode ? "Update Recipe" : "Add New Recipe" }}
+    </h2>
     <div class="form-control">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" formControlName="name" />

@@ -28,10 +28,9 @@ export class IngredientsService {
   }
 
   removeSelectedIngredient(ingId: string) {
-    const updatedIngredients = this.ingredients.filter(
-      (ingredient: Ingredient) => ingredient.id !== ingId
-    );
-    this.updatedIngredients.next(updatedIngredients);
+    const index = this.ingredients.findIndex((i) => i.id === ingId);
+    this.ingredients.splice(index, 1);
+    this.updatedIngredients.next(this.ingredients.slice());
   }
 
   updateSelectedIngredient(ingredient: Ingredient) {

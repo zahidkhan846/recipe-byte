@@ -5,11 +5,11 @@ import { Recipe } from 'src/model/recipe';
 import { RecipesService } from 'src/services/recipes.service';
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css'],
+  selector: 'app-recipe-detail',
+  templateUrl: './recipe-detail.component.html',
+  styleUrls: ['./recipe-detail.component.css'],
 })
-export class DetailComponent implements OnInit {
+export class RecipeDetailComponent implements OnInit {
   recipeId: string = null;
   selectedRecipe: Recipe = null;
 

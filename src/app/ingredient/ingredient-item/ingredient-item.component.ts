@@ -18,7 +18,7 @@ export class IngredientItemComponent implements OnInit {
   ngOnInit(): void {}
 
   onEdit(id: string) {
-    this.router.navigate(['shop', id, 'edit']);
+    this.router.navigate(['ingredient', id, 'edit']);
   }
 
   onDelete(id: string) {

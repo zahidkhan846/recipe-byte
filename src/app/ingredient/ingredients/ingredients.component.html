@@ -1,7 +1,9 @@
 <div class="container">
   <div class="add-ing">
     <h2 class="colorful-text">All Ingredients</h2>
-    <a routerLink="/shop/add-ing" class="btn btn-light no-shadow capitalize"
+    <a
+      routerLink="/ingredient/add-ing"
+      class="btn btn-light no-shadow capitalize"
       >Add Ingredient</a
     >
   </div>
@@ -13,10 +15,9 @@
       ></app-ingredient-item>
     </ul>
     <div class="fallback" *ngIf="!hasIngredients()">
-      <!-- <app-fallback-content
+      <app-fallback-content
         fallbackText="Ingredients will appear here..."
-      ></app-fallback-content> -->
-      <h4>Your Ingredients will appear here.</h4>
+      ></app-fallback-content>
     </div>
   </div>
 </div>
