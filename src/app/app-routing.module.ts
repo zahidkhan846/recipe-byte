@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NavGuardService } from 'src/services/nav-guard.service';
+import { AddEditRecipeComponent } from './recipe/add-edit-recipe/add-edit-recipe.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,11 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('./authentication/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'add-recipe',
+    component: AddEditRecipeComponent,
+    canActivate: [NavGuardService],
   },
 ];
 

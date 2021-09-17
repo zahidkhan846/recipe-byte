@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { AuthService } from 'src/services/auth.service';
 import { RecipesService } from 'src/services/recipes.service';
 

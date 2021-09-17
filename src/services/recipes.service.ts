@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { databseUrl } from 'src/config/firebase';
 import { Recipe } from 'src/model/recipe';
 
@@ -15,8 +15,17 @@ export class RecipesService {
 
   fetchAllRecipes() {
     return this.http.get<Recipe[]>(databseUrl('recipes')).pipe(
-      tap((recipes) => {
-        this.setAllRecipes(recipes);
+      map((resData) => {
+        const allRecipes = [];
+        for (const key in resData) {
+          if (resData.hasOwnProperty(key)) {
+            allRecipes.push({ ...resData[key], id: key });
+          }
+        }
+        return allRecipes;
+      }),
+      tap((allRecipes) => {
+        this.setAllRecipes(allRecipes);
       })
     );
   }
@@ -36,8 +45,18 @@ export class RecipesService {
   }
 
   addNewRecipe(recipe: Recipe) {
-    this.recipes.unshift(recipe);
-    this.updatedRecipes.next(this.recipes.slice());
+    console.log(recipe.id);
+    this.http
+      .post<Recipe>(databseUrl('recipes'), recipe, {
+        observe: 'response',
+      })
+      .subscribe((res) => {
+        if (res.ok) {
+          recipe.id = res.body.name;
+          this.recipes.unshift(recipe);
+          this.updatedRecipes.next(this.recipes.slice());
+        }
+      });
   }
 
   updateSelectedRecipe(updatedRecipe: Recipe) {

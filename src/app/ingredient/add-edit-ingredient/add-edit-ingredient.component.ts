@@ -13,7 +13,7 @@ import { IngredientsService } from 'src/services/ingredients.service';
 export class AddEditIngredientComponent implements OnInit {
   @ViewChild('ingForm', { static: true }) ingForm: NgForm;
 
-  ingId: string = null;
+  ingIndex: number = null;
   editMode: boolean = false;
   ingredient: Ingredient = null;
 
@@ -25,10 +25,10 @@ export class AddEditIngredientComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((p: Params) => {
-      this.ingId = p.id;
-      if (this.ingId) {
+      this.ingIndex = p.id;
+      if (this.ingIndex) {
         this.editMode = true;
-        this.ingredient = this.ingService.getSelectedIngredient(this.ingId);
+        this.ingredient = this.ingService.getSelectedIngredient(this.ingIndex);
         setTimeout(() => {
           this.ingForm.setValue({
             name: this.ingredient.name,
@@ -41,13 +41,11 @@ export class AddEditIngredientComponent implements OnInit {
 
   onFormSubmit(ingForm: NgForm) {
     const ingredient = {
-      id: new Date().toISOString(),
       name: ingForm.value.name,
       quantity: ingForm.value.qty,
     };
     if (this.editMode) {
-      ingredient.id = this.ingredient.id;
-      this.ingService.updateSelectedIngredient(ingredient);
+      this.ingService.updateSelectedIngredient(ingredient, this.ingIndex);
     } else {
       this.ingService.addNewIngredient(ingredient);
     }

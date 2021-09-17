@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Ingredient } from 'src/model/ingredient';
 import { Recipe } from 'src/model/recipe';
 import { RecipesService } from 'src/services/recipes.service';
+import { idGenerator } from 'src/utils/idGenerator';
 
 @Component({
   selector: 'app-add-edit-recipe',
@@ -69,7 +70,7 @@ export class AddEditRecipeComponent implements OnInit {
 
   onSubmit() {
     const recipe = new Recipe(
-      new Date().toISOString(),
+      idGenerator(),
       this.recipeForm.value.name,
       this.recipeForm.value.description,
       this.recipeForm.value.imageUrl,

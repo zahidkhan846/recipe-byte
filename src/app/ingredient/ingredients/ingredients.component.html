@@ -10,8 +10,9 @@
   <div class="center">
     <ul *ngIf="hasIngredients()">
       <app-ingredient-item
-        *ngFor="let ingredient of ingredients"
+        *ngFor="let ingredient of ingredients; let i = index"
         [ingredient]="ingredient"
+        [ingIndex]="i"
       ></app-ingredient-item>
     </ul>
     <div class="fallback" *ngIf="!hasIngredients()">

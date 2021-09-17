@@ -4,7 +4,7 @@ import { Ingredient } from 'src/model/ingredient';
 export class IngredientsService {
   updatedIngredients = new Subject<Ingredient[]>();
 
-  private ingredients: Ingredient[] = [new Ingredient('1', 'Doe', 2)];
+  private ingredients: Ingredient[] = [new Ingredient('Doe', 2)];
 
   getAllIngredients() {
     const copyOfIngredients = [...this.ingredients];
@@ -21,25 +21,17 @@ export class IngredientsService {
     this.updatedIngredients.next(this.ingredients.slice());
   }
 
-  getSelectedIngredient(ingId: string) {
-    return this.ingredients.find(
-      (ingredient: Ingredient) => ingredient.id === ingId
-    );
+  getSelectedIngredient(ingIndex: number) {
+    return this.ingredients[ingIndex];
   }
 
-  removeSelectedIngredient(ingId: string) {
-    const index = this.ingredients.findIndex((i) => i.id === ingId);
-    this.ingredients.splice(index, 1);
+  removeSelectedIngredient(ingIndex: number) {
+    this.ingredients.splice(ingIndex, 1);
     this.updatedIngredients.next(this.ingredients.slice());
   }
 
-  updateSelectedIngredient(ingredient: Ingredient) {
-    const { id } = ingredient;
-    const selectedIngredient = this.ingredients.find(
-      (ingredient: Ingredient) => ingredient.id === id
-    );
-    selectedIngredient.name = ingredient.name;
-    selectedIngredient.quantity = ingredient.quantity;
+  updateSelectedIngredient(ingredient: Ingredient, index: number) {
+    this.ingredients[index] = ingredient;
     this.updatedIngredients.next(this.ingredients.slice());
   }
 }

@@ -10,18 +10,21 @@ import { IngredientsService } from 'src/services/ingredients.service';
 })
 export class IngredientItemComponent implements OnInit {
   @Input() ingredient: Ingredient;
+  @Input() ingIndex: number;
   constructor(
     private router: Router,
     private ingredientService: IngredientsService
   ) {}
 
-  ngOnInit(): void {}
-
-  onEdit(id: string) {
-    this.router.navigate(['ingredient', id, 'edit']);
+  ngOnInit(): void {
+    console.log(this.ingIndex);
   }
 
-  onDelete(id: string) {
-    this.ingredientService.removeSelectedIngredient(id);
+  onEdit(index: number) {
+    this.router.navigate(['ingredient', index, 'edit']);
+  }
+
+  onDelete(index: number) {
+    this.ingredientService.removeSelectedIngredient(index);
   }
 }

@@ -9,11 +9,11 @@ const routes: Routes = [
     component: IngredientsComponent,
   },
   {
-    path: 'ingredient/add-ing',
+    path: 'add-ing',
     component: AddEditIngredientComponent,
   },
   {
-    path: 'ingredient/:id/edit',
+    path: ':id/edit',
     component: AddEditIngredientComponent,
   },
 ];

@@ -19,12 +19,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'add-recipe',
-    component: AddEditRecipeComponent,
-    canActivate: [NavGuardService],
-  },
-  {
-    path: 'recipes/:id/edit',
+    path: ':id/edit',
     component: AddEditRecipeComponent,
     resolve: [RecipeResolver],
     canActivate: [NavGuardService],
